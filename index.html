@@ -12,10 +12,6 @@
       --muted:#666;
       --line:#e6e3de;
       --brand:#111;
-      --btn:#111;
-      --btn-bg:#fff;
-      --btn-br:#cfcac2;
-      --radius:999px;
       --maxw:1100px;
     }
 
@@ -28,15 +24,21 @@
 
     /* ===== Top Nav ===== */
     .topbar{position:sticky; top:0; z-index:10; background:var(--bg); border-bottom:1px solid var(--line)}
-    .nav{display:flex; align-items:center; justify-content:flex-end; gap:16px; height:60px}
-    .links{display:flex; align-items:center; gap:12px}
-    .links a{display:inline-block; padding:10px 16px; border-radius:var(--radius); text-decoration:none; color:var(--btn); background:var(--btn-bg); border:1px solid var(--btn-br); font-weight:600}
-    .links a:hover{filter:brightness(0.98)}
+    .nav{display:flex; align-items:center; justify-content:space-between; height:70px}
+    .brand{display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit}
+    .brand .logo{width:69px; height:69px; border-radius:50%; object-fit:cover; border:1px solid var(--line)}
+    .brand .titles{display:flex; flex-direction:column; line-height:1.2}
+    .brand .name{font-weight:700; letter-spacing:.02em}
+    .brand .slogan{font-size:.9rem; color:var(--muted)}
+
+    .links{display:flex; align-items:center; gap:24px}
+    .links a{color:var(--ink); text-decoration:underline; font-weight:500}
+    .links a:hover{color:#000}
 
     /* ===== Hero with background ===== */
     .hero{
       position:relative;
-      height:80vh;
+      height:70vh;
       display:flex;
       align-items:center;
       justify-content:center;
@@ -60,16 +62,8 @@
       position:relative;
       z-index:2;
     }
-    .hero-content img.logo{
-      width:96px; /* increased by ~50% */
-      height:96px;
-      border-radius:50%;
-      object-fit:cover;
-      border:2px solid #fff;
-      margin-bottom:15px;
-    }
     .hero-content .name{
-      font-size:1.6rem;
+      font-size:1.8rem;
       font-weight:700;
       margin-bottom:6px;
     }
@@ -91,6 +85,7 @@
 
     @media (max-width: 860px){
       .two{grid-template-columns:1fr}
+      .nav{flex-direction:column; align-items:flex-start; height:auto; gap:10px}
     }
   </style>
 </head>
@@ -98,6 +93,13 @@
   <!-- ===== Top bar ===== -->
   <div class="topbar">
     <div class="wrap nav">
+      <a class="brand" href="#top">
+        <img class="logo" src="images/logo.jpg" alt="Louise Gann logo">
+        <span class="titles">
+          <span class="name">Louise Gann Sports Massage Therapy</span>
+          <span class="slogan">Relax, Recover, Revive – Wherever You Are</span>
+        </span>
+      </a>
       <nav class="links" aria-label="Primary">
         <a href="#about">About me</a>
         <a href="#treatments">Treatments</a>
@@ -110,7 +112,6 @@
   <section class="hero">
     <div class="overlay"></div>
     <div class="hero-content">
-      <img class="logo" src="images/logo.jpg" alt="Louise Gann logo">
       <div class="name">Louise Gann Sports Massage Therapy</div>
       <div class="slogan">Relax, Recover, Revive – Wherever You Are</div>
     </div>
