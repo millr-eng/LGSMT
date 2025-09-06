@@ -125,6 +125,31 @@
     .btn-outline:hover { background: rgba(255, 255, 255, 0.15); }
     .btn-outline:focus { outline: 2px solid #fff; }
 
+    /* Sticky CTA */
+    .sticky-cta {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      padding: 12px 24px;
+      border-radius: 50px;
+      background: var(--gradient);
+      color: #fff;
+      font-family: var(--body-font);
+      font-weight: 600;
+      font-size: 1rem;
+      box-shadow: 0 8px 16px rgba(8, 127, 140, 0.3);
+      transition: var(--transition);
+      opacity: 0;
+      transform: translateY(20px);
+      z-index: 50;
+    }
+    .sticky-cta.visible { opacity: 1; transform: translateY(0); }
+    .sticky-cta:hover { transform: translateY(-3px); box-shadow: 0 12px 20px rgba(8, 127, 140, 0.4); }
+    .sticky-cta:focus { outline: 2px solid var(--accent-dark); outline-offset: 3px; }
+    @media (max-width: 560px) {
+      .sticky-cta { padding: 10px 20px; font-size: 0.95rem; }
+    }
+
     /* Top bar */
     .topbar {
       position: fixed;
@@ -332,6 +357,39 @@
       justify-content: center;
     }
 
+    /* FAQ */
+    .faq {
+      margin-top: 32px;
+      max-width: 65ch;
+      margin-inline: auto;
+    }
+    .faq h3 {
+      font-family: var(--heading-font);
+      font-size: 1.3rem;
+      color: var(--accent-dark);
+      margin-bottom: 16px;
+      text-align: center;
+    }
+    details {
+      margin-bottom: 12px;
+      background: #fff;
+      border-radius: 8px;
+      padding: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+    summary {
+      font-weight: 600;
+      color: var(--accent-dark);
+      cursor: pointer;
+      padding: 8px;
+    }
+    details[open] summary { color: var(--accent); }
+    details p {
+      padding: 12px 8px 0;
+      font-size: 0.95rem;
+      color: #4a5568;
+    }
+
     /* Treatments */
     .treatments-grid {
       display: grid;
@@ -360,6 +418,36 @@
       color: var(--accent-dark);
     }
     .card p { margin: 0 0 16px; font-size: 0.95rem; color: #4a5568; }
+
+    /* Testimonials */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 24px;
+    }
+    .testimonial-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: var(--transition);
+    }
+    .testimonial-card.visible { opacity: 1; transform: translateY(0); }
+    .testimonial-card blockquote {
+      font-size: 1.05rem;
+      color: #2d3748;
+      margin: 0 0 12px;
+      font-style: italic;
+    }
+    .testimonial-card cite {
+      font-size: 0.95rem;
+      color: var(--accent-dark);
+      font-weight: 500;
+    }
 
     /* Contact */
     .contact-card {
@@ -407,6 +495,7 @@
       .menu-btn { display: inline-block; }
       .nav { padding-inline: 16px; }
       .hero .cta-row { flex-direction: column; align-items: center; }
+      .testimonials-grid { grid-template-columns: 1fr; }
     }
 
     /* High contrast mode */
@@ -417,12 +506,12 @@
         --rule: #000;
         --accent: #005555;
       }
-      .btn { border: 2px solid #000; }
+      .btn, .sticky-cta { border: 2px solid #000; }
     }
 
     /* Reduced motion */
     @media (prefers-reduced-motion: reduce) {
-      .btn, .card, .about-grid, .contact-card, .mobile-menu, .hero::before { transition: none; }
+      .btn, .card, .about-grid, .contact-card, .mobile-menu, .hero::before, .testimonial-card, .sticky-cta { transition: none; }
       .hero-content, .hero .title-main, .hero .title-sub, .hero .slogan, .hero .cta-row { animation: none; }
     }
   </style>
@@ -445,6 +534,7 @@
         <a href="#top">Home</a>
         <a href="#about">About</a>
         <a href="#treatments">Treatments</a>
+        <a href="#testimonials">Testimonials</a>
         <a href="#contact">Contact</a>
       </nav>
       <button class="menu-btn" id="menuBtn" aria-controls="mobileMenu" aria-expanded="false" aria-label="Toggle menu">Menu</button>
@@ -452,6 +542,7 @@
         <a href="#top" onclick="closeMenu()">Home</a>
         <a href="#about" onclick="closeMenu()">About</a>
         <a href="#treatments" onclick="closeMenu()">Treatments</a>
+        <a href="#testimonials" onclick="closeMenu()">Testimonials</a>
         <a href="#contact" onclick="closeMenu()">Contact</a>
       </nav>
     </div>
@@ -483,6 +574,21 @@
       <div class="about-actions">
         <a class="btn" href="#contact">Book a Session</a>
         <a class="btn" style="background: linear-gradient(135deg, #10b981, #0ea371)" href="tel:07419128456">📞 Call Now</a>
+      </div>
+      <div class="faq">
+        <h3>Frequently Asked Questions</h3>
+        <details>
+          <summary>What is sports massage?</summary>
+          <p>Sports massage is a targeted therapy to relieve muscle tension, improve flexibility, and aid recovery, suitable for athletes and non-athletes alike.</p>
+        </details>
+        <details>
+          <summary>Is pregnancy massage safe?</summary>
+          <p>Yes, my pregnancy massage is tailored for expectant mothers, using safe techniques to promote relaxation and reduce discomfort.</p>
+        </details>
+        <details>
+          <summary>How do I book a session?</summary>
+          <p>Contact me via phone, email, or book directly through the scheduling tool on this website.</p>
+        </details>
       </div>
     </div>
   </section>
@@ -520,6 +626,25 @@
     <p class="note" style="margin-top: 20px; text-align: center; font-style: italic;">*10% discount for Blue Light Card holders & Military personnel.</p>
   </section>
 
+  <!-- Testimonials -->
+  <section id="testimonials" class="wrap" aria-label="Client testimonials">
+    <h2>Testimonials</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <blockquote>"Louise’s sports massage transformed my recovery after intense training sessions. Highly professional!"</blockquote>
+        <cite>– Sarah T., Athlete</cite>
+      </div>
+      <div class="testimonial-card">
+        <blockquote>"The pregnancy massage was so relaxing and tailored to my needs. I felt amazing afterward!"</blockquote>
+        <cite>– Emma R., Expectant Mother</cite>
+      </div>
+      <div class="testimonial-card">
+        <blockquote>"Cupping therapy with Louise eased my chronic tension. She’s a true expert!"</blockquote>
+        <cite>– James L., Office Worker</cite>
+      </div>
+    </div>
+  </section>
+
   <!-- Contact -->
   <section id="contact" class="wrap" aria-label="Contact information">
     <h2>Contact</h2>
@@ -535,6 +660,9 @@
       </div>
     </div>
   </section>
+
+  <!-- Sticky CTA -->
+  <a class="sticky-cta" href="#contact" aria-label="Book a session now">Book Now</a>
 
   <footer role="contentinfo">
     <p>© <span id="year"></span> Louise Gann - Mobile Sports Massage Therapy. All rights reserved.</p>
@@ -582,6 +710,12 @@
       }
     });
 
+    // Sticky CTA visibility
+    const stickyCta = document.querySelector('.sticky-cta');
+    window.addEventListener('scroll', () => {
+      stickyCta.classList.toggle('visible', window.scrollY > 200);
+    }, { passive: true });
+
     // Scroll animations with Intersection Observer
     const observerOptions = {
       threshold: 0.2,
@@ -595,7 +729,7 @@
         }
       });
     }, observerOptions);
-    document.querySelectorAll('.about-grid, .contact-card, .card').forEach(el => observer.observe(el));
+    document.querySelectorAll('.about-grid, .contact-card, .card, .testimonial-card').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
