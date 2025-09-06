@@ -3,347 +3,152 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Peak Motion – Sports Massage Therapy</title>
-  <meta name="description" content="Sports massage therapy to help you move better, recover faster, and perform at your best." />
+  <title>Louise Gann – Sports Massage Therapy</title>
+  <meta name="description" content="Relax, Recover, Revive – Wherever You Are. Sports massage, deep tissue, pregnancy massage, kinesiology taping in Colchester." />
   <link rel="icon" href="favicon.ico" />
+  <!-- Optional display fonts to echo the flyer vibe -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Great+Vibes&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#0f172a;       /* slate-900 */
-      --bg-alt:#0b1227;   /* darker blend */
-      --panel:#111827;    /* gray-900 */
-      --text:#e5e7eb;     /* gray-200 */
-      --muted:#94a3b8;    /* slate-400 */
-      --brand:#22d3ee;    /* cyan-400 */
-      --brand-2:#38bdf8;  /* sky-400 */
-      --accent:#34d399;   /* emerald-400 */
-      --danger:#f43f5e;   /* rose-500 */
-      --maxw:1100px;
-      --radius:18px;
-      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --paper:#f6f2ee;          /* warm off‑white */
+      --ink:#1f2937;            /* dark gray */
+      --muted:#6b7280;          /* mid gray */
+      --rule:#e5e7eb;           /* hairline */
+      --brand:#111;             /* almost black for headings */
+      --accent:#9a8c7a;         /* subtle taupe accent */
+      --maxw:1000px;
+      --radius:22px;
     }
-
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
+    *{box-sizing:border-box}
+    html,body{height:100%}
     body{
-      margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: radial-gradient(1000px 600px at 10% 0%, rgba(56,189,248,.06), transparent 60%),
-                  radial-gradient(1000px 600px at 90% 10%, rgba(34,211,238,.07), transparent 60%),
-                  linear-gradient(180deg, var(--bg), var(--bg-alt));
-      color: var(--text);
-      line-height: 1.55;
+      margin:0; color:var(--ink); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height:1.6;
+      /* subtle paper texture with gradients */
+      background:
+        radial-gradient(1200px 800px at 10% -10%, rgba(154,140,122,.08), transparent 60%),
+        radial-gradient(900px 600px at 100% 0%, rgba(0,0,0,.03), transparent 55%),
+        linear-gradient(#faf7f3, #f5f2ee);
     }
+    .page{max-width:var(--maxw); margin:36px auto; padding:28px; background:var(--paper); border-radius:18px; box-shadow: 0 10px 35px rgba(0,0,0,.06), 0 2px 8px rgba(0,0,0,.05)}
+    .container{max-width:var(--maxw); margin:0 auto}
 
-    /* ====== Layout ====== */
-    .container{ width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: 20px; }
-    section{ padding: 72px 0; }
-
-    /* ====== Top Nav ====== */
-    .topbar{
-      position: sticky; top:0; z-index: 50; backdrop-filter: blur(8px);
-      background: linear-gradient(180deg, rgba(2,6,23,.7), rgba(2,6,23,.35));
-      border-bottom: 1px solid rgba(148,163,184,.15);
+    /* ====== Header Images ====== */
+    .hero-strip{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+    .photo{
+      height:220px; overflow:hidden; border-radius:26px; border-bottom-left-radius:12px; border-bottom-right-radius:12px; /* top heavier rounding like flyer */
+      background:#ddd; position:relative
     }
-    .nav{ display:flex; align-items:center; justify-content:space-between; height:64px; }
-    .brand{ display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--text); }
-    .logo{ width:34px; height:34px; border-radius:10px; background:linear-gradient(135deg, var(--brand), var(--brand-2)); box-shadow: var(--shadow); }
-    .brand span{ font-weight:700; letter-spacing:.3px; }
+    .photo img{width:100%; height:100%; object-fit:cover; display:block}
 
-    .links{ display:flex; gap:28px; align-items:center; }
-    .links a{ text-decoration:none; color:var(--muted); font-weight:600; font-size: 0.95rem; }
-    .links a:hover{ color:var(--text); }
+    /* ====== Brand Row ====== */
+    .brand-row{display:grid; grid-template-columns:1fr 1fr; gap:20px; align-items:center; padding:18px 4px 6px}
+    .logo-mark{display:flex; align-items:center; gap:12px}
+    .sig{font-family: "Great Vibes", cursive; font-size: clamp(28px, 5vw, 44px); color:var(--brand); line-height:1}
+    .sub{letter-spacing:.18em; text-transform:uppercase; font-weight:600; color:var(--muted); font-size:.78rem}
+    .motto{text-align:right}
+    .script{font-family:"Great Vibes", cursive; font-size: clamp(20px, 3.6vw, 34px); color:#4b5563}
+    .script small{font-family: inherit; font-size: .85em}
 
-    .cta{ display:inline-block; padding:10px 16px; border-radius:999px; font-weight:700; text-decoration:none; background:linear-gradient(135deg, var(--brand), var(--brand-2)); color:#0b1227; box-shadow: var(--shadow); }
-    .cta:hover{ filter:brightness(1.08); }
+    hr.rule{border:0; border-top:1px solid var(--rule); margin:16px 0 12px}
 
-    .hamburger{ display:none; gap:6px; flex-direction:column; }
-    .hamburger span{ width:24px; height:2px; background:var(--text); opacity:.9; }
+    /* ====== Two Column List/Pricing ====== */
+    .cols{display:grid; grid-template-columns: 1fr 1fr; gap:30px; margin-top:12px}
+    .col h3{font-size:1.25rem; margin:0 0 8px; text-decoration: underline; text-underline-offset: 5px}
+    .gridline{position:relative}
+    .gridline:after{content:""; position:absolute; top:0; bottom:0; left:-15px; width:1px; background:var(--rule)}
 
-    /* ====== Hero ====== */
-    .hero{ padding: 96px 0 48px; }
-    .hero-grid{ display:grid; grid-template-columns: 1.15fr 0.85fr; gap:42px; align-items:center; }
-    .eyebrow{ color: var(--brand); font-weight:800; text-transform:uppercase; letter-spacing:.15em; font-size:.75rem; }
-    h1{ margin:12px 0 14px; font-size: clamp(1.8rem, 4vw, 3rem); line-height:1.1; }
-    .lead{ color: var(--muted); font-size: clamp(1rem, 1.5vw, 1.15rem); }
-    .hero-cta{ display:flex; gap:14px; margin-top:22px; align-items:center; flex-wrap:wrap; }
+    ul.clean{list-style:none; padding:0; margin:0}
+    ul.clean li{padding:8px 0; border-bottom:1px dashed rgba(0,0,0,.07)}
 
-    .card{
-      background: linear-gradient(180deg, rgba(17,24,39,.7), rgba(17,24,39,.55));
-      border: 1px solid rgba(148,163,184,.18);
-      border-radius: var(--radius);
-      padding: 18px;
-      box-shadow: var(--shadow);
-    }
+    .price-list{list-style:none; padding:0; margin:0}
+    .price-list li{display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px dashed rgba(0,0,0,.07)}
+    .price{font-weight:700}
+    .note{font-size:.9rem; color:var(--muted); margin-top:10px}
 
-    .hero-img{ aspect-ratio: 4/3; width:100%; border-radius: var(--radius); overflow:hidden; }
-    .hero-img img{ width:100%; height:100%; object-fit:cover; filter:contrast(1.05) saturate(1.05); }
+    /* ====== Footer contact icons ====== */
+    .footer{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; align-items:center; margin-top:18px}
+    .pill{display:flex; align-items:center; gap:10px; padding:10px 12px; border:1px solid var(--rule); border-radius:999px; background:#fff; box-shadow:0 1px 0 rgba(255,255,255,.7) inset}
+    .pill a{color:inherit; text-decoration:none}
+    .icon{width:18px; height:18px; opacity:.65}
 
-    /* ====== Services ====== */
-    .grid{ display:grid; gap:18px; grid-template-columns: repeat(3, 1fr); }
-    .service h3{ margin:8px 0 6px; font-size:1.05rem; }
-    .service p{ color:var(--muted); font-size:.95rem; }
-
-    /* ====== Pricing ====== */
-    .pricing{ display:grid; gap:18px; grid-template-columns: repeat(3, 1fr); align-items:stretch; }
-    .price-card{ padding:22px; border-radius: var(--radius); border:1px solid rgba(148,163,184,.2); background: linear-gradient(180deg, rgba(15,23,42,.65), rgba(15,23,42,.45)); }
-    .price-card h4{ margin:0 0 8px; }
-    .price{ font-size:1.8rem; font-weight:800; }
-    .small{ color:var(--muted); font-size:.9rem; }
-    .btn-outline{ display:inline-block; margin-top:14px; padding:10px 14px; border-radius:12px; border:1px solid rgba(148,163,184,.35); text-decoration:none; color:var(--text); font-weight:700; }
-    .btn-outline:hover{ border-color: var(--brand-2); color: var(--brand-2); }
-
-    /* ====== Testimonials ====== */
-    .testi{ display:grid; gap:18px; grid-template-columns: repeat(3, 1fr); }
-    .quote{ font-style:italic; color:var(--muted); }
-
-    /* ====== FAQ ====== */
-    details{ border:1px solid rgba(148,163,184,.2); border-radius: 14px; padding: 12px 14px; background: rgba(17,24,39,.45); }
-    summary{ cursor:pointer; font-weight:700; }
-    details p{ color: var(--muted); margin:8px 0 0; }
-
-    /* ====== Footer ====== */
-    footer{ padding: 40px 0 70px; color: var(--muted); }
-    footer a{ color: var(--text); text-decoration:none; }
-    footer a:hover{ text-decoration:underline; }
-
-    /* ====== Utilities ====== */
-    .muted{ color:var(--muted); }
-    .center{ text-align:center; }
-    .spacer{ height:18px; }
-
-    /* ====== Responsive ====== */
-    @media (max-width: 900px){
-      .hero-grid{ grid-template-columns: 1fr; }
-      .grid, .pricing, .testi { grid-template-columns: 1fr; }
-      .links{ display:none; }
-      .hamburger{ display:flex; }
-      .mobile-menu{ display:none; padding: 10px 0 18px; }
-      .mobile-menu a{ display:block; padding:10px 0; color:var(--muted); text-decoration:none; }
-      .mobile-menu a:hover{ color:var(--text); }
+    @media (max-width: 820px){
+      .brand-row{grid-template-columns:1fr}
+      .motto{text-align:left}
+      .cols{grid-template-columns:1fr}
+      .gridline:after{display:none}
+      .footer{grid-template-columns:1fr 1fr}
     }
   </style>
 </head>
 <body>
-  <!-- ===== Top Navigation ===== -->
-  <div class="topbar">
-    <div class="container nav">
-      <a class="brand" href="#top" aria-label="Peak Motion Home">
-        <div class="logo" aria-hidden="true"></div>
-        <span>Peak&nbsp;Motion</span>
-      </a>
-      <nav class="links" aria-label="Primary">
-        <a href="#services">Services</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-        <a class="cta" href="#booking">Book Now</a>
-      </nav>
-      <button class="hamburger" id="menuBtn" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+  <main class="page">
+    <!-- Top triptych images -->
+    <div class="hero-strip">
+      <!-- Replace these with your own images in /images/ -->
+      <div class="photo"><img src="images/leg-massage.jpg" alt="Sports massage on leg"></div>
+      <div class="photo"><img src="images/pregnancy-bump.jpg" alt="Pregnancy massage"></div>
+      <div class="photo"><img src="images/back-massage.jpg" alt="Back massage"></div>
     </div>
-    <div class="container mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile">
-      <a href="#services" onclick="toggleMenu(false)">Services</a>
-      <a href="#pricing" onclick="toggleMenu(false)">Pricing</a>
-      <a href="#about" onclick="toggleMenu(false)">About</a>
-      <a href="#contact" onclick="toggleMenu(false)">Contact</a>
-      <a class="cta" href="#booking" onclick="toggleMenu(false)">Book Now</a>
-    </div>
-  </div>
 
-  <!-- ===== Hero ===== -->
-  <header id="top" class="hero">
-    <div class="container hero-grid">
-      <div>
-        <div class="eyebrow">Sports Massage • Injury Rehab</div>
-        <h1>Move Better. Recover Faster. Perform Stronger.</h1>
-        <p class="lead">Evidence‑informed sports massage and soft‑tissue therapy for gym‑goers, runners, cyclists and weekend warriors. Targeted techniques to reduce pain, improve mobility and speed up recovery.</p>
-        <div class="hero-cta">
-          <a class="cta" href="#booking">Book your session</a>
-          <a class="btn-outline" href="#services">See what we do</a>
-        </div>
-        <p class="small" style="margin-top:8px">Located in <strong>Your Town</strong>. Evening and weekend appointments available.</p>
-      </div>
-      <div class="card hero-img" aria-hidden="true">
-        <!-- Replace with your own royalty‑free image URL or local /images/hero.jpg -->
-        <img src="https://images.unsplash.com/photo-1603398749947-8638f2f308a2?q=80&w=1740&auto=format&fit=crop" alt="Sports massage therapy session" />
-      </div>
-    </div>
-  </header>
-
-  <!-- ===== Services ===== -->
-  <section id="services">
-    <div class="container">
-      <h2 class="center">Services</h2>
-      <p class="center muted">Hands‑on treatment + simple rehab you can actually stick to.</p>
-      <div class="spacer"></div>
-      <div class="grid">
-        <div class="card service">
-          <h3>Sports Massage</h3>
-          <p>Deep‑tissue and soft‑tissue techniques tailored to your sport and training load. Ideal for tight calves, hamstrings, traps and lower‑back tension.</p>
-        </div>
-        <div class="card service">
-          <h3>Injury Assessment</h3>
-          <p>Clear assessment to understand what’s going on, with a simple plan to reduce pain and get you training again safely.</p>
-        </div>
-        <div class="card service">
-          <h3>Pre‑/Post‑Event Care</h3>
-          <p>Loosen up before race day or speed up post‑event recovery so you’re ready for the next block.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Pricing ===== -->
-  <section id="pricing">
-    <div class="container">
-      <h2 class="center">Pricing</h2>
-      <p class="center muted">Transparent, no surprises.</p>
-      <div class="spacer"></div>
-      <div class="pricing">
-        <div class="price-card">
-          <h4>Initial Consultation (60 mins)</h4>
-          <div class="price">£55</div>
-          <p class="small">Assessment + treatment + take‑home plan</p>
-          <a class="btn-outline" href="#booking">Book</a>
-        </div>
-        <div class="price-card">
-          <h4>Follow‑up (45 mins)</h4>
-          <div class="price">£45</div>
-          <p class="small">Focused treatment to keep you progressing</p>
-          <a class="btn-outline" href="#booking">Book</a>
-        </div>
-        <div class="price-card">
-          <h4>Event Package</h4>
-          <div class="price">£120</div>
-          <p class="small">Pre‑event loosener + post‑event recovery (2 sessions)</p>
-          <a class="btn-outline" href="#booking">Book</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== About ===== -->
-  <section id="about">
-    <div class="container">
-      <div class="grid" style="grid-template-columns:1.1fr .9fr; align-items:center;">
+    <!-- Brand + strapline -->
+    <div class="brand-row">
+      <div class="logo-mark">
         <div>
-          <h2>About Peak Motion</h2>
-          <p class="muted">Hi—I’m <strong>Your Name</strong>, Level 3/4 Sports Massage Therapist. I help active people address niggles, recover from training and get back to doing what they love. Expect clear explanations, effective hands‑on work and simple exercises that fit your life.</p>
-          <ul class="muted">
-            <li>✓ Fully insured • First aid trained</li>
-            <li>✓ Evenings & weekends available</li>
-            <li>✓ Free parking • Easy access</li>
-          </ul>
-        </div>
-        <div class="card hero-img" aria-hidden="true">
-          <img src="https://images.unsplash.com/photo-1587017539501-b2c4c0c16275?q=80&w=1740&auto=format&fit=crop" alt="Therapy room" />
+          <div class="sig">Louise Gann</div>
+          <div class="sub">SPORTS MASSAGE THERAPY</div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ===== Testimonials ===== -->
-  <section id="reviews">
-    <div class="container">
-      <h2 class="center">What clients say</h2>
-      <div class="spacer"></div>
-      <div class="testi">
-        <div class="card">
-          <p class="quote">“Tight calves before my half‑marathon—sorted in two sessions. Ran a PB and felt great.”</p>
-          <p class="small">— Alex R.</p>
-        </div>
-        <div class="card">
-          <p class="quote">“Clear advice and the exercises actually fit my schedule. Back to squatting pain‑free.”</p>
-          <p class="small">— Jamie K.</p>
-        </div>
-        <div class="card">
-          <p class="quote">“Relaxing but effective. Neck and shoulder tension is finally under control.”</p>
-          <p class="small">— Priya S.</p>
-        </div>
+      <div class="motto">
+        <div class="script">Relax, Recover, Revive <small>– Wherever You Are</small></div>
       </div>
     </div>
-  </section>
 
-  <!-- ===== FAQ ===== -->
-  <section id="faq">
-    <div class="container">
-      <h2 class="center">FAQ</h2>
-      <div class="spacer"></div>
-      <div class="grid" style="grid-template-columns:1fr 1fr;">
-        <details>
-          <summary>What should I wear?</summary>
-          <p>Gym shorts and a t‑shirt are perfect. We’ll keep you comfortable and covered at all times.</p>
-        </details>
-        <details>
-          <summary>Can I train after a session?</summary>
-          <p>Light movement is usually fine—intense training is best left for the next day. We’ll advise based on your case.</p>
-        </details>
-        <details>
-          <summary>Do you treat non‑athletes?</summary>
-          <p>Absolutely. Desk‑based aches and everyday niggles respond well to sports massage too.</p>
-        </details>
-        <details>
-          <summary>How do I pay?</summary>
-          <p>Card or cash in person. Pre‑payment available when you book online.</p>
-        </details>
+    <hr class="rule" />
+
+    <!-- Services + Prices columns -->
+    <div class="cols">
+      <div class="col">
+        <h3>Services</h3>
+        <ul class="clean">
+          <li>Sports Massage <span class="note">(can include Myofascial Cupping)</span></li>
+          <li>Deep Tissue Massage</li>
+          <li>Pregnancy Massage</li>
+          <li>Kinesiology Taping <span class="note">– £10 (1–2 body parts)</span></li>
+        </ul>
+      </div>
+      <div class="col gridline">
+        <h3>Prices</h3>
+        <ul class="price-list">
+          <li><span>30 mins</span> <span class="price">£30</span></li>
+          <li><span>45 mins</span> <span class="price">£42</span></li>
+          <li><span>60 mins</span> <span class="price">£55</span></li>
+        </ul>
+        <p class="note">*10% discount for Blue Light Card holders &amp; Military personnel</p>
       </div>
     </div>
-  </section>
 
-  <!-- ===== Contact / Booking ===== -->
-  <section id="contact">
-    <div class="container">
-      <div class="grid" style="grid-template-columns:1fr 1fr; align-items:start;">
-        <div>
-          <h2>Get in touch</h2>
-          <p class="muted">Questions before booking? Send a message and we’ll respond within one working day.</p>
-          <!-- Simple static form: replace action with your form endpoint (e.g., https://formsubmit.co/ or Formspree) -->
-          <form class="card" action="#" method="post" onsubmit="alert('This is a demo form. Connect Formspree or FormSubmit to receive emails.'); return false;">
-            <label>Name<br><input required name="name" placeholder="Your name" style="width:100%; padding:10px; border-radius:10px; border:1px solid rgba(148,163,184,.35); background:#0b1227; color:var(--text);"></label>
-            <div class="spacer"></div>
-            <label>Email<br><input required type="email" name="email" placeholder="you@example.com" style="width:100%; padding:10px; border-radius:10px; border:1px solid rgba(148,163,184,.35); background:#0b1227; color:var(--text);"></label>
-            <div class="spacer"></div>
-            <label>Message<br><textarea required name="message" rows="5" placeholder="How can we help?" style="width:100%; padding:10px; border-radius:10px; border:1px solid rgba(148,163,184,.35); background:#0b1227; color:var(--text);"></textarea></label>
-            <div class="spacer"></div>
-            <button class="cta" type="submit">Send</button>
-          </form>
-        </div>
-        <div id="booking">
-          <h2>Book online</h2>
-          <p class="muted">Connect your booking tool (Calendly, TidyCal, Cliniko, etc.). For now this button is a placeholder.</p>
-          <a class="cta" href="#" onclick="alert('Link this to your booking system URL.'); return false;">Open booking</a>
-          <div class="spacer"></div>
-          <div class="card">
-            <strong>Location</strong>
-            <p class="small">Unit 2, High Street, Your Town, AB12 3CD</p>
-            <strong>Hours</strong>
-            <p class="small">Mon–Fri 17:30–21:00 • Sat 09:00–13:00</p>
-          </div>
-        </div>
+    <hr class="rule" />
+
+    <!-- Contact row -->
+    <div class="footer">
+      <div class="pill">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Based in Colchester</span>
+      </div>
+      <div class="pill">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.86 19.86 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.86 19.86 0 012 4.18 2 2 0 014 2h3a2 2 0 012 1.72c.12.9.33 1.77.62 2.61a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.47-1.47a2 2 0 012.11-.45c.84.29 1.71.5 2.61.62A2 2 0 0122 16.92z"/></svg>
+        <a href="tel:07419128456">07419 128456</a>
+      </div>
+      <div class="pill">
+        <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c-5.4 0-9.8 4.4-9.8 9.8 0 4.3 2.8 8 6.7 9.3.5.1.7-.2.7-.5v-1.9c-2.7.6-3.2-1.1-3.2-1.1-.5-1.2-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1.7 2 .7 2 1.8.7 3.4 0 4-.1.1-.8.4-1.3.7-1.6-2.2-.2-4.5-1.1-4.5-5a3.8 3.8 0 011-2.6c-.1-.2-.4-1.1.1-2.3 0 0 .8-.3 2.6 1a8.9 8.9 0 014.7 0c1.8-1.3 2.6-1 2.6-1 .5 1.2.2 2.1.1 2.3.7.7 1 1.6 1 2.6 0 3.9-2.3 4.8-4.5 5 .4.3.8 1 .8 2v3c0 .3.2.6.7.5 4-1.3 6.7-5 6.7-9.3 0-5.4-4.4-9.8-9.8-9.8z"/></svg>
+        <a href="https://instagram.com/lgsportsmassagetherapy_" target="_blank" rel="noopener">lgsportsmassagetherapy_</a>
+      </div>
+      <div class="pill">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
+        <a href="mailto:lgannsportsmassage@gmail.com">lgannsportsmassage@gmail.com</a>
       </div>
     </div>
-  </section>
-
-  <footer>
-    <div class="container center">
-      <p>© <span id="y"></span> Peak Motion Sports Massage • <a href="#">Privacy</a></p>
-      <p class="small">Made with ♥ on GitHub Pages</p>
-    </div>
-  </footer>
-
-  <script>
-    // Mobile menu toggle
-    const btn = document.getElementById('menuBtn');
-    const menu = document.getElementById('mobileMenu');
-    function toggleMenu(force){
-      const show = typeof force === 'boolean' ? force : menu.style.display !== 'block';
-      menu.style.display = show ? 'block' : 'none';
-      btn.setAttribute('aria-expanded', show ? 'true' : 'false');
-    }
-    btn?.addEventListener('click', () => toggleMenu());
-
-    // Current year in footer
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+  </main>
 </body>
 </html>
