@@ -7,14 +7,14 @@
   <link rel="icon" href="favicon.ico" />
   <style>
     :root{
-      --bg:#f7f6f3;    /* light background */
-      --ink:#222;      /* primary text */
-      --muted:#666;    /* secondary text */
-      --line:#e6e3de;  /* hairlines */
-      --brand:#111;    /* headings */
-      --btn:#111;      /* button text */
-      --btn-bg:#fff;   /* button bg */
-      --btn-br:#cfcac2;/* button border */
+      --bg:#f7f6f3;
+      --ink:#222;
+      --muted:#666;
+      --line:#e6e3de;
+      --brand:#111;
+      --btn:#111;
+      --btn-bg:#fff;
+      --btn-br:#cfcac2;
       --radius:999px;
       --maxw:1100px;
     }
@@ -26,44 +26,70 @@
     }
     .wrap{max-width:var(--maxw); margin:0 auto; padding:20px 24px}
 
-    /* ===== Top Nav like example (light theme) ===== */
+    /* ===== Top Nav ===== */
     .topbar{position:sticky; top:0; z-index:10; background:var(--bg); border-bottom:1px solid var(--line)}
-    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px; height:76px}
-    .brand{display:flex; align-items:center; gap:14px; text-decoration:none; color:inherit}
-    .brand .logo{width:46px; height:46px; border-radius:50%; object-fit:cover; border:1px solid var(--line); background:#fff}
-    .brand .titles{display:flex; flex-direction:column; line-height:1.2}
-    .brand .name{font-weight:700; letter-spacing:.02em}
-    .brand .slogan{font-size:.9rem; color:var(--muted)}
-
+    .nav{display:flex; align-items:center; justify-content:flex-end; gap:16px; height:60px}
     .links{display:flex; align-items:center; gap:12px}
     .links a{display:inline-block; padding:10px 16px; border-radius:var(--radius); text-decoration:none; color:var(--btn); background:var(--btn-bg); border:1px solid var(--btn-br); font-weight:600}
     .links a:hover{filter:brightness(0.98)}
 
-    /* ===== Hero split ===== */
-    .hero{padding:32px 0 16px}
-    .hero-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:30px; align-items:center}
-    .eyebrow{color:var(--muted); font-weight:700; letter-spacing:.12em; text-transform:uppercase; font-size:.78rem}
-    h1{margin:8px 0 12px; font-family: Georgia, 'Times New Roman', serif; color:var(--brand); font-size:clamp(1.9rem, 4vw, 3rem); line-height:1.15}
-    .lead{color:var(--muted)}
-    .hero-media{border-radius:22px; overflow:hidden; border:1px solid var(--line); background:#ddd}
-    .hero-media img, .hero-media video{display:block; width:100%; height:100%; object-fit:cover}
+    /* ===== Hero with background ===== */
+    .hero{
+      position:relative;
+      height:80vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      color:#fff;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:url('images/mass1.jpg') center/cover no-repeat;
+      z-index:0;
+    }
+    .overlay{
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,0.45);
+      z-index:1;
+    }
+    .hero-content{
+      position:relative;
+      z-index:2;
+    }
+    .hero-content img.logo{
+      width:96px; /* increased by ~50% */
+      height:96px;
+      border-radius:50%;
+      object-fit:cover;
+      border:2px solid #fff;
+      margin-bottom:15px;
+    }
+    .hero-content .name{
+      font-size:1.6rem;
+      font-weight:700;
+      margin-bottom:6px;
+    }
+    .hero-content .slogan{
+      font-size:1rem;
+      font-style:italic;
+      color:#f0f0f0;
+    }
 
     /* ===== Sections ===== */
     section{padding:42px 0}
     h2{font-size:1.25rem; text-decoration:underline; text-underline-offset:6px; margin:0 0 8px}
-
     .two{display:grid; grid-template-columns:1fr 1fr; gap:24px}
     ul{list-style:none; padding:0; margin:0}
     li{padding:7px 0; border-bottom:1px dashed #e9e5df}
     .note{font-size:.92rem; color:var(--muted)}
 
-    footer{border-top:1px solid var(--line); padding:18px 0 36px; font-size:.95rem; color:#444}
+    footer{border-top:1px solid var(--line); padding:18px 0 36px; font-size:.95rem; color:#444; text-align:center}
 
-    /* Mobile */
     @media (max-width: 860px){
-      .nav{height:auto; padding:10px 0; align-items:flex-start}
-      .links{gap:8px; flex-wrap:wrap}
-      .hero-grid{grid-template-columns:1fr}
       .two{grid-template-columns:1fr}
     }
   </style>
@@ -72,15 +98,6 @@
   <!-- ===== Top bar ===== -->
   <div class="topbar">
     <div class="wrap nav">
-      <!-- Left: small logo + business title + slogan -->
-      <a class="brand" href="#top">
-        <img class="logo" src="images/logo.jpg" alt="Louise Gann logo">
-        <span class="titles">
-          <span class="name">Louise Gann Sports Massage Therapy</span>
-          <span class="slogan">Relax, Recover, Revive – Wherever You Are</span>
-        </span>
-      </a>
-      <!-- Right: navigation buttons -->
       <nav class="links" aria-label="Primary">
         <a href="#about">About me</a>
         <a href="#treatments">Treatments</a>
@@ -90,19 +107,14 @@
   </div>
 
   <!-- ===== Hero ===== -->
-  <main id="top" class="wrap hero">
-    <div class="hero-grid">
-      <div>
-        <div class="eyebrow">Sports Massage • Injury Rehab</div>
-        <h1>Personalised sports massage to help you move better and feel your best.</h1>
-        <p class="lead">Evidence‑informed hands‑on treatment with simple rehab you can stick to. Based in Colchester; evenings and weekends available.</p>
-      </div>
-      <div class="hero-media">
-        <!-- Replace with your video or image -->
-        <img src="images/massage3.jpg" alt="Treatment in session" />
-      </div>
+  <section class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <img class="logo" src="images/logo.jpg" alt="Louise Gann logo">
+      <div class="name">Louise Gann Sports Massage Therapy</div>
+      <div class="slogan">Relax, Recover, Revive – Wherever You Are</div>
     </div>
-  </main>
+  </section>
 
   <!-- ===== About ===== -->
   <section id="about" class="wrap">
@@ -110,7 +122,7 @@
     <p class="note">Hi, I’m Louise—Level 3/4 Sports Massage Therapist. I help active people reduce pain, improve mobility and get back to training safely. Expect clear explanations, effective treatment and realistic exercises that fit your life.</p>
   </section>
 
-  <!-- ===== Treatments / Services & Pricing ===== -->
+  <!-- ===== Treatments ===== -->
   <section id="treatments" class="wrap">
     <h2>Treatments</h2>
     <div class="two">
@@ -142,7 +154,7 @@
     <p>📷 <a href="https://instagram.com/lgsportsmassagetherapy_" target="_blank" rel="noopener">@lgsportsmassagetherapy_</a></p>
   </section>
 
-  <footer class="wrap">
+  <footer>
     <p>© <span id="y"></span> Louise Gann Sports Massage Therapy</p>
   </footer>
 
