@@ -21,6 +21,8 @@
       --rule:#e6e3de;
       --maxw:1100px;
       --nav-h:110px;
+      --accent:#0ea5a5;
+      --accent-ink:#063b3b;
       --heading-font:"Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       --body-font:"Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       --hand-font:"Dancing Script", cursive;
@@ -34,10 +36,24 @@
       line-height:1.6; color:var(--ink); background:var(--bg);
       scroll-behavior:smooth;
     }
-    a{color:inherit}
+    a{color:inherit; text-decoration:none}
     img{max-width:100%; height:auto; display:block}
 
     .wrap{max-width:var(--maxw); margin-inline:auto; padding-inline:24px}
+
+    /* ===== Buttons ===== */
+    .btn{
+      display:inline-block; padding:10px 18px; border-radius:999px;
+      background:var(--accent); color:#fff; font-weight:600;
+      border:1px solid #0b8d8d; box-shadow:0 6px 14px rgba(14,165,165,.25);
+      transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+    }
+    .btn:hover{ transform:translateY(-2px); box-shadow:0 10px 18px rgba(14,165,165,.35) }
+    .btn-outline{
+      background:transparent; color:#fff; border:1.5px solid #fff;
+      box-shadow:none;
+    }
+    .btn-outline:hover{ background:#ffffff20 }
 
     /* ===== Top bar ===== */
     .topbar{position:fixed; inset:0 0 auto 0; z-index:30; background:transparent;}
@@ -84,16 +100,16 @@
     .hero-content{position:relative; z-index:2; padding-top:var(--nav-h)}
     .hero .title-main{
       font-family:var(--heading-font);
-      font-size:clamp(2rem, 5vw, 3rem);
+      font-size:clamp(2.2rem, 5.2vw, 3.4rem);
       font-weight:700;
       margin:0;
       text-shadow:0 2px 12px rgba(0,0,0,.65);
     }
     .hero .title-sub{
       font-family:var(--heading-font);
-      font-size:clamp(1.3rem, 3vw, 2rem);
+      font-size:clamp(1.4rem, 3.4vw, 2.2rem);
       font-weight:500;
-      margin:6px 0 20px; /* increased gap below this line */
+      margin:8px 0 32px;
       text-shadow:0 2px 10px rgba(0,0,0,.6);
     }
     .hero .slogan{
@@ -101,9 +117,10 @@
       font-size:1.3rem;
       font-style:italic;
       color:#f3f4f6;
-      margin-top:16px; /* bigger gap above slogan */
+      margin-top:48px;
       text-shadow:0 2px 8px rgba(0,0,0,.6);
     }
+    .hero .cta-row{margin-top:20px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
 
     /* ===== Sections ===== */
     section{padding:44px 0}
@@ -114,15 +131,30 @@
       margin:0 0 10px; text-align:center;
     }
 
+    /* About */
     .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:center}
     .about-grid .copy{max-width:60ch; margin-inline:auto}
     .about-grid p{margin:0 0 1em; text-align:left}
+    .about-actions{margin-top:12px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center}
 
+    /* Treatments */
     .treatments-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:24px; margin-top:20px}
-    .card{background:#fff; border:1px solid #ddd; border-radius:12px; overflow:hidden; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,.05)}
+    .card{
+      background:#fff; border:1px solid #ddd; border-radius:12px; overflow:hidden; text-align:center;
+      box-shadow:0 2px 8px rgba(0,0,0,.05); transition:transform .18s ease, box-shadow .18s ease;
+    }
+    .card:hover{ transform:translateY(-4px); box-shadow:0 10px 20px rgba(0,0,0,.12) }
     .card img{width:100%; aspect-ratio:1/1; object-fit:cover}
     .card h3{font-family:var(--heading-font); font-size:1.05rem; margin:10px 0 4px}
     .card p{margin:0 0 12px; font-size:.95rem; color:#444}
+
+    /* Contact */
+    .contact-card{
+      max-width:600px; margin-inline:auto;
+      background:#fff; border:1px solid #e5e5e5; border-radius:14px;
+      padding:18px; box-shadow:0 6px 14px rgba(0,0,0,.05)
+    }
+    .contact-actions{display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-top:12px}
 
     #top, section{scroll-margin-top:calc(var(--nav-h) + 8px)}
 
@@ -169,6 +201,10 @@
       <div class="title-main">Louise Gann</div>
       <div class="title-sub">Mobile Sports Massage Therapy</div>
       <div class="slogan">Relax, Recover, Revive – Wherever You Are</div>
+      <div class="cta-row">
+        <a class="btn" href="#contact">Book now</a>
+        <a class="btn btn-outline" href="#treatments">View treatments</a>
+      </div>
     </div>
   </section>
 
@@ -182,6 +218,10 @@
       <p>Hi, I’m Louise, a qualified Sports Massage Therapist based in Colchester. I work with a wide range of clients — from athletes looking to support performance and recovery, to busy parents, desk workers, and anyone needing relief from the physical and mental strain of day-to-day life.</p>
       <p>Alongside sports massage, I also offer pregnancy massage and cupping therapy. These treatments allow me to support people at different stages, whether that’s providing safe, soothing relief during pregnancy or using targeted techniques to ease deeper, long-standing tension.</p>
       <p>My approach is always personal. I take the time to listen, understand what’s going on for you, and shape each treatment around your needs — with the aim of helping you move more comfortably and feel more at ease in yourself.</p>
+      <div class="about-actions">
+        <a class="btn" href="#contact">Book a session</a>
+        <a class="btn" style="background:#10b981;border-color:#0ea371" href="tel:07419128456">📞 Call now</a>
+      </div>
     </div>
   </section>
 
@@ -221,10 +261,17 @@
   <!-- Contact -->
   <section id="contact" class="wrap">
     <h2>Contact</h2>
-    <p style="text-align:center">📍 Based in Colchester, Essex</p>
-    <p style="text-align:center">📞 <a href="tel:07419128456">07419 128456</a></p>
-    <p style="text-align:center">📧 <a href="mailto:lgannsportsmassage@gmail.com">lgannsportsmassage@gmail.com</a></p>
-    <p style="text-align:center">📷 <a href="https://instagram.com/lgsportsmassagetherapy_" target="_blank" rel="noopener">@lgsportsmassagetherapy_</a></p>
+    <div class="contact-card">
+      <p style="text-align:center; margin:0 0 6px">📍 Based in Colchester, Essex</p>
+      <p style="text-align:center; margin:0 0 2px">📞 <a href="tel:07419128456">07419 128456</a></p>
+      <p style="text-align:center; margin:0 0 10px">📧 <a href="mailto:lgannsportsmassage@gmail.com">lgannsportsmassage@gmail.com</a></p>
+      <p style="text-align:center; margin:0 0 10px">📷 <a href="https://instagram.com/lgsportsmassagetherapy_" target="_blank" rel="noopener">@lgsportsmassagetherapy_</a></p>
+      <div class="contact-actions">
+        <a class="btn" href="tel:07419128456">📞 Call now</a>
+        <a class="btn" href="mailto:lgannsportsmassage@gmail.com">✉️ Email</a>
+        <a class="btn" href="#treatments">See prices</a>
+      </div>
+    </div>
   </section>
 
   <footer>
@@ -233,11 +280,13 @@
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
+
     const topbar = document.getElementById('topbar');
     window.addEventListener('scroll', ()=>{
       if (window.scrollY > 20) topbar.classList.add('scrolled');
       else topbar.classList.remove('scrolled');
     }, {passive:true});
+
     const btn = document.getElementById('menuBtn');
     const menu = document.getElementById('mobileMenu');
     function closeMenu(){ menu.style.display = 'none'; btn.setAttribute('aria-expanded','false'); }
